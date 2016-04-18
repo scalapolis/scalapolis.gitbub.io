@@ -9,10 +9,7 @@
 
     <link href='https://fonts.googleapis.com/css?family=Candal' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Poiret+One&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
+    <link href='styles.css' rel='stylesheet' type='text/css'>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -21,74 +18,47 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body style="margin:0;padding:0;height:100%">
+  <body>
 
-     <canvas id = "canvas" style="display:none;width:1px;height:1px;"></canvas>
-     <div id = "main" style="width:100%;height:100%;line-height:500px;text-align: center;">
+     <canvas id="canvas"></canvas>
+     <div id="main">
 
-       <div style="display: inline-block;">
-       <span style="
-      vertical-align: middle;
-      line-height: normal;
-      font-size: 148px;
-          font-style: oblique;
-          color: #3C3638;
-        font-family: 'Poiret One', cursive;"><span style="color:red">Scala</span>polis</span>
+       <div id="text-block">
+         <h1>
+           <span style="color:red">Scala</span>polis</h1>
 
-        <span style=" display: block;
-       vertical-align: middle;
+           <h2>Wrocław, 3.09.2016</h2>
 
-       line-height: normal;
-       font-size: 80px;
-           font-style: oblique;
-           color: #3C3638;
-         font-family: 'Poiret One', cursive;
-          margin-bottom: 50px;
-          ">Wrocław, 3.09.2016</span>
-
-         <span style="
-           vertical-align: middle;
-          display: block;
-        line-height: normal;
-        font-size: 20px;
-            font-style: oblique;
-            color: #3C3638;
-          font-family: 'Poiret One', cursive;">Więcej informacji już wkrótce</span>
-
+           <h3>Więcej informacji już wkrótce</h3>
        </div>
-
      </div>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/0.4.0/trianglify.min.js"></script>
-  <script>
+    <script>
+      var canvas = document.getElementById('canvas');
+      var ctx = canvas.getContext('2d');
 
-    var canvas = document.getElementById('canvas');
-    var ctx = canvas.getContext('2d');
+      function assignToDiv(){
+        dataUrl = canvas.toDataURL();
+          document.getElementById('main').style.background='url('+dataUrl+')';
+      }
 
-    function assignToDiv(){
-      dataUrl = canvas.toDataURL();
-        document.getElementById('main').style.background='url('+dataUrl+')'
-    }
+      function draw(){
+        var pattern = Trianglify({
+            width: window.outerWidth,
+            height: document.getElementById('main').offsetHeight,
+            x_colors: 'PuOr'
+        });
+        pattern.canvas(ctx.canvas);
+      }
 
-    function draw() {
-      var pattern = Trianglify({
-          width: window.innerWidth,
-          height: document.getElementById('main').offsetHeight,
-          x_colors: 'PuOr'
-      });
+      draw();
+      assignToDiv();
 
-      pattern.canvas(ctx.canvas)
-
-    }
-
-    draw()
-    assignToDiv()
-
-    window.onresize = function(event) {
-      draw()
-      assignToDiv()
-    }
-  </script>
+      window.onresize = function(event) {
+        draw();
+        assignToDiv();
+      }
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
     <!-- Latest compiled and minified JavaScript -->
@@ -103,6 +73,6 @@
   ga('create', 'UA-75058545-1', 'auto');
   ga('send', 'pageview');
 
-</script>
+  </script>
   </body>
 </html>
