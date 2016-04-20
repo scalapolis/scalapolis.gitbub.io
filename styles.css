@@ -65,6 +65,33 @@ label {
   font-family: 'Poiret One', cursive;
 }
 
+#social-icons {
+      margin-top: 100px;
+}
+
+#social-icons-list > li {
+  display: inline-block;
+ zoom:1;
+ *display:inline;
+ /* this fix is needed for IE7- */
+
+}
+
+#social-icons-list  > li > a {
+    display: block;
+    width: 60px;
+}
+
+
+
+a:visited {
+    color: black;
+}
+
+a:link {
+    color: black;
+}
+
 @media (min-width: 768px){
   h1 {
     font-size: 148px;
