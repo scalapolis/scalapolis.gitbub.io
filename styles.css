@@ -111,6 +111,16 @@ label {
 .box-content {
     background-color: #cc3fcc;
 }
+
+.menu {
+    width: 97%;
+    position: absolute;
+    z-index: 2;
+    display: block;
+    text-align: right;
+    margin-right: 6%;
+}
+
 .box {
     margin: 0 auto;
     border-radius: 5px;
